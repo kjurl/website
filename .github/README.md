@@ -13,7 +13,7 @@ Enjoy!!
 
 <summary> Deploying to Vercel
 
-Posted In: [Astro Discord Help](https://discord.com/channels/830184174198718474/1463776611219406919) 
+Posted In: [Astro Discord Help](https://discord.com/channels/830184174198718474/1463776611219406919)
 
 </summary>
 
@@ -21,10 +21,10 @@ I am trying to deploy a Astrojs+Fastapi app on Vercel. I have spent and ungodly 
 ```tree
 .
 ├── api
-│   ├── main.py 
+│   ├── main.py
 ├── src
 │   ├── pages
-│   │   ├── api/trpc/[trpc].ts 
+│   │   ├── api/trpc/[trpc].ts
 │   │   └── index.astro
 │   ├── env.d.ts
 │   ├── middleware.ts
@@ -128,7 +128,7 @@ export const onRequest = defineMiddleware((context, next) => {
   return next();
 });
 ```
-   
+
 Additional Comments:
 - I would like a solutions without using `builds` and `routes` inside the `vercel.json` as they are deprecated.
 - If not an answer please suggest me how I can improve this question, and where can I further get help on this topic.
