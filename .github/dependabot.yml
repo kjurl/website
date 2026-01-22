@@ -1,22 +1,33 @@
+# https://docs.github.com/en/code-security/dependabot/working-with-dependabot/dependabot-options-reference
 version: 2
 
 updates:
-  - package-ecosystem: github-actions
-    directory: /
-    schedule:
-      interval: monthly
-
-  - package-ecosystem: npm
-    directory: /
-    schedule:
-      interval: monthly
+  # 1. GitHub Actions
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule: &weekly-checkout
+      interval: "weekly"
+      day: "sunday"
+      time: "04:00"
+    open-pull-requests-limit: 1
     groups:
-      astro:
-        applies-to: version-updates
-        patterns:
-          - "*astro*"
+      actions-dependencies:
+        patterns: ["*"]
 
-  - package-ecosystem: pip
-    directory: /
-    schedule:
-      interval: monthly
+  # 2. NPM (Web dependencies)
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule: *weekly-checkout
+    open-pull-requests-limit: 1
+    groups:
+      npm-dependencies:
+        patterns: ["*"]
+
+  # 3. Pip (Python dependencies)
+  - package-ecosystem: "pip"
+    directory: "/"
+    schedule: *weekly-checkout
+    open-pull-requests-limit: 1
+    groups:
+      python-dependencies:
+        patterns: ["*"]
